@@ -1,16 +1,26 @@
 import React from 'react';
-import {StramChat} from 'stream-chat';
-import {chat} from "stream-chat-react";
-import cookies from 'universal-cookie';
+import { StreamChat } from 'stream-chat';
+import { Chat } from 'stream-chat-react';
+import Cookies from 'universal-cookie';
+
+import { ChannelListContainer,ChannelContainer } from './components';
+
+import './App.css';
 
 const apiKey='fxbgc58nm5fx';
 
+const client =StreamChat.getInstance(apiKey)
+
 const App = () => {
   return (
-    <div>
-        <h1>Realtime Chat Application</h1>
+    <div className="app__wrapper">
+      <chat client={client} theme="team light">
+            <ChannelListContainer/>
+            <ChannelContainer/>
+      </chat>
     </div>
   )
 }
 
 export default App
+
